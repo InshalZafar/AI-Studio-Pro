@@ -25,25 +25,6 @@ general AI conversations.
 -   🏗 Modular FastAPI + Next.js Architecture
 
 ------------------------------------------------------------------------
-
-## 🖼 Screenshots
-
-> Replace these placeholders after finishing the UI.
-
-  Dashboard                General AI
-  ------------------------ -------------------------
-  `assets/dashboard.png`   `assets/general-ai.png`
-
-  Document AI                CSV Analytics
-  -------------------------- ---------------------
-  `assets/document-ai.png`   `assets/csv-ai.png`
-
-  Recipe AI                Sports AI
-  ------------------------ ------------------------
-  `assets/recipe-ai.png`   `assets/sports-ai.png`
-
-------------------------------------------------------------------------
-
 # 📚 Modules
 
 ## 🤖 General AI
