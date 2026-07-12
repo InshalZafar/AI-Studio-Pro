@@ -1,0 +1,23 @@
+# Backend
+backend/.venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.db
+backend/.env
+backend/uploads/documents/*
+backend/uploads/csv/*
+!backend/uploads/documents/.gitkeep
+!backend/uploads/csv/.gitkeep
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
+frontend/*.log
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.log

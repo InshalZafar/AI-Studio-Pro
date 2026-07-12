@@ -1,0 +1,48 @@
+from collections.abc import AsyncGenerator
+from typing import Any
+from openai import AsyncOpenAI, AuthenticationError
+from app.ai.base import AIProvider
+
+
+class OpenAIProvider(AIProvider):
+    def default_model(self) -> str:
+        return "gpt-4o-mini"
+
+    def _client(self) -> AsyncOpenAI:
+        return AsyncOpenAI(api_key=self.api_key)
+
+    async def chat(self, messages: list[dict[str, str]], **kwargs: Any) -> str:
+        client = self._client()
+        resp = await client.chat.completions.create(
+            model=self.model,
+            messages=messages,
+            **kwargs,
+        )
+        return resp.choices[0].message.content or ""
+
+    async def chat_stream(self, messages: list[dict[str, str]], **kwargs: Any) -> AsyncGenerator[str, None]:
+        client = self._client()
+        stream = await client.chat.completions.create(
+            model=self.model,
+            messages=messages,
+            stream=True,
+            **kwargs,
+        )
+        async for chunk in stream:
+            delta = chunk.choices[0].delta.content if chunk.choices else None
+            if delta:
+                yield delta
+
+    async def test_connection(self) -> tuple[bool, str]:
+        try:
+            client = self._client()
+            await client.chat.completions.create(
+                model=self.model,
+                messages=[{"role": "user", "content": "ping"}],
+                max_tokens=5,
+            )
+            return True, "OpenAI connection successful."
+        except AuthenticationError:
+            return False, "Invalid OpenAI API key."
+        except Exception as e:  # noqa: BLE001
+            return False, f"OpenAI connection failed: {e}"

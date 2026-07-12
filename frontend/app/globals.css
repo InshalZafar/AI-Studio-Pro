@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+[data-theme="dark"] {
+  --canvas: #0B0D12;
+  --canvas-raised: #12141B;
+  --canvas-surface: #171923;
+  --canvas-border: #262A36;
+  --ink: #F3F4F6;
+  --ink-muted: #9CA3AF;
+  --ink-faint: #5B5F6B;
+}
+
+[data-theme="light"] {
+  --canvas: #F7F5F0;
+  --canvas-raised: #FFFFFF;
+  --canvas-surface: #EFEDE6;
+  --canvas-border: #DFDCD2;
+  --ink: #191A1F;
+  --ink-muted: #5B5D66;
+  --ink-faint: #9A9CA5;
+}
+
+* {
+  border-color: var(--canvas-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--canvas);
+  color: var(--ink);
+}
+
+::selection {
+  background-color: #7C6CF6;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--canvas-border);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ink-faint);
+}
+
+/* Visible keyboard focus ring, respecting the studio accent */
+:focus-visible {
+  outline: 2px solid #7C6CF6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Markdown content styling for chat responses */
+.prose-studio {
+  line-height: 1.7;
+}
+.prose-studio p {
+  margin: 0.6em 0;
+}
+.prose-studio ul, .prose-studio ol {
+  margin: 0.6em 0;
+  padding-left: 1.4em;
+}
+.prose-studio li {
+  margin: 0.25em 0;
+}
+.prose-studio code {
+  background: var(--canvas-surface);
+  border: 1px solid var(--canvas-border);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.prose-studio pre {
+  background: var(--canvas-surface);
+  border: 1px solid var(--canvas-border);
+  padding: 1em;
+  border-radius: 10px;
+  overflow-x: auto;
+  margin: 0.8em 0;
+}
+.prose-studio pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+.prose-studio h1, .prose-studio h2, .prose-studio h3 {
+  font-family: var(--font-sora), sans-serif;
+  margin: 0.9em 0 0.4em;
+  font-weight: 600;
+}
+.prose-studio a {
+  color: #A79BFA;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-studio blockquote {
+  border-left: 2px solid #7C6CF6;
+  padding-left: 1em;
+  color: var(--ink-muted);
+  margin: 0.6em 0;
+}
