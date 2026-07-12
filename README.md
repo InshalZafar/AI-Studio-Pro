@@ -128,17 +128,32 @@ general AI conversations.
 # 📁 Project Structure
 
 ``` text
+## 📁 Project Structure
+
+```text
 AI-Studio-Pro/
 ├── backend/
+│   ├── app/
+│   │   ├── api/
+│   │   ├── services/
+│   │   ├── models/
+│   │   ├── schemas/
+│   │   ├── database/
+│   │   ├── ai/
+│   │   ├── utils/
+│   │   └── main.py
+│   └── requirements.txt
+│
 ├── frontend/
-├── assets/
-├── docs/
-├── README.md
-├── CHANGELOG.md
-├── CONTRIBUTING.md
-├── SECURITY.md
-├── LICENSE
-└── .gitignore
+│   ├── app/
+│   ├── components/
+│   ├── hooks/
+│   ├── lib/
+│   ├── public/
+│   └── styles/
+│
+├── .gitignore
+└── README.md
 ```
 
 ------------------------------------------------------------------------
